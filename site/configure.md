@@ -509,9 +509,11 @@ That format is [still supported](#config-file-formats) for backwards compatibili
 The classic format is **deprecated**. Please prefer the [new style config format](#config-file)
 in `rabbitmq.conf` accompanied by an `advanced.config` file as needed.
 
-To use a config file in the classic format, export `RABBITMQ_CONFIG_FILE` to point to the file with
-a `.config` extension. The extension will indicate to RabbitMQ that it should treat the file as one
-in the classic config format.
+For backwards compatibility, if `rabbitmq.config` exists in the configuration directory, then RabbitMQ will read it
+instead of `rabbitmq.conf`. To read `rabbitmq.conf` by default, the file `rabbitmq.config` must be removed.
+
+If the environment variable `RABBITMQ_CONFIG_FILE` points to a file with a `.config` extension,
+RabbitMQ will treat the file as one in the classic config format.
 
 [An example configuration file](https://github.com/rabbitmq/rabbitmq-server/blob/v3.7.x/deps/rabbit/docs/rabbitmq.config.example) named
 `rabbitmq.config.example`. It contains an example of most of the configuration items in the classic config format.
